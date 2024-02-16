@@ -1,0 +1,26 @@
+<section class="form container-fluid">
+  <a href="/" class="btn btn-outline-dark">Logout</a>
+  <div class="container read-student">
+    <h4 class="text-center"><u>My Results</u></h4>
+    <div class="my-details my-5">
+      <table class="table">
+        <thead class="table-dark">
+          <tr>
+            <th scope="col">Roll no.</th>
+            <th scope="col">Name</th>
+            <th scope="col">Date of birth</th>
+            <th scope="col">Score</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{student.roll}}</td>
+            <td>{{student.name}}</td>
+            <td>{{student.dob.toISOString().split('T')[0]}}</td>
+            <td>{{student.score}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>

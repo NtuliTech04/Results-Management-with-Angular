@@ -1,0 +1,36 @@
+<section class="form list-student-section container-fluid">
+  <a routerLink="/teacherOptions" class="btn btn-outline-dark">Go Back</a>
+  <div class="container list-students">
+    <h4 class="text-center"><u>List of All Student</u></h4>
+      <!-- No data message -->
+      <p *ngIf="Students.length <= 0" class="no-data text-center text-danger">No students have been added so far!</p>
+      <!-- Students list -->
+      <table class="table" *ngIf="Students.length > 0">
+        <thead class="table-dark">
+          <tr>
+            <th scope="col">Roll No.</th>
+            <th scope="col">Name</th>
+            <th scope="col">Date of Birth</th>
+            <th scope="col">Score</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="head" *ngFor="let student of Students; let i = index">
+            <td>{{student.roll}}</td>
+            <td>{{student.name}}</td>
+            <td>{{student.dob}}</td>
+            <td>{{student.score}}</td>
+            <td>
+              <a [routerLink]="['/editStudent/', student._id]">
+                <img src="https://img.icons8.com/material-outlined/30/000000/edit.png" />
+              </a>
+              <a (click)="removeStudent(student, i)">
+                <img src="https://img.icons8.com/ios-glyphs/30/000000/filled-trash.png" />
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+</section>

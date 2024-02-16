@@ -1,0 +1,58 @@
+<section class="form add-student-section container-fluid">
+  <a routerLink="/teacherOptions" class="btn btn-outline-dark">Go Back</a>
+  <div class="container add-student">
+    <h4 class="text-center"><u>Add Student Results</u></h4>
+    <form [formGroup]="addStudentForm" (ngSubmit)="onSubmit()" autocomplete="off">
+      <div class="row">
+        <div class="col-lg-6">
+
+          <div class="mb-3">
+            <label class="form-label">Roll No. : </label>
+            <input class="form-control" type="text" maxlength="8" formControlName="roll">
+            <!-- error -->
+            <div class="text-danger" *ngIf="submitted && validateForm['roll'].errors?.['required']">Student roll number is required.</div>
+            <div class="text-danger" *ngIf="submitted && validateForm['roll'].errors?.['pattern']">Only numeric values are acceptable.</div>
+            <div class="text-danger" *ngIf="submitted && validateForm['roll'].errors?.['minlength']">Roll number must be 8 digits long.</div>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Name : </label>
+            <input class="form-control" type="text" formControlName="name">
+            <!-- error -->
+            <div class="text-danger" *ngIf="submitted && validateForm['name'].errors?.['required']">Student full name is required.</div>
+            <div class="text-danger" *ngIf="submitted && validateForm['name'].errors?.['pattern']">Invalid name format. E.g., Yanga Ntuli</div>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Date of Birth : </label>
+            <input class="form-control" type="date" formControlName="dob">
+            <!-- error -->
+            <div class="text-danger" *ngIf="submitted && validateForm['dob'].errors?.['required']">Student date of birth is required.</div>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Score : </label>
+            <input class="form-control" type="text" maxlength="3" formControlName="score">
+            <!-- error -->
+            <div class="text-danger" *ngIf="submitted && validateForm['score'].errors?.['required']">Student results are mandatory.</div>
+            <div class="text-danger" *ngIf="submitted && validateForm['score'].errors?.['pattern']">Only numeric values are acceptable.</div>
+            <div class="text-danger" *ngIf="submitted && validateForm['score'].errors?.['max']">Student score cannot exceed 100%</div>
+          </div>
+
+          <div class="text-center mb-3">
+            <span class="px-3">
+              <button type="submit" class="btn btn-success w-25" onclick="blur()">Add</button>
+            </span>
+            <span class="px-3">
+              <button type="button" class="btn btn-danger" (click)="onReset()" onclick="blur()">Reset</button>
+            </span>
+            <span class="px-3">
+              <a routerLink="/listStudents" class="btn btn-primary w-25">View All</a>
+            </span>
+          </div>
+
+        </div>
+      </div>
+    </form>
+  </div>
+</section>

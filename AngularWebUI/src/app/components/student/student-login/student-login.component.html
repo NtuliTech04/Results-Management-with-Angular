@@ -1,0 +1,40 @@
+<section class="form container-fluid">
+  <a href="/" class="btn btn-outline-dark">Go Back</a>
+  <div class="container student-login">
+    <h3 class="text-center"><u>Find My Results</u></h3>
+    <div class="row">
+      <div class="col-lg-6">
+        <h5>Enter your details</h5>
+          <form [formGroup]="loginForm" (ngSubmit)="onLogin()" autocomplete="off">
+
+            <div class="mb-3">
+              <label class="form-label">Roll no : </label>
+              <input class="form-control" type="text" formControlName="roll" id="roll">
+              <!-- error -->
+              <div class="text-danger" *ngIf="submitted && validateForm['roll'].errors?.['required']">Student roll number is required.</div>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Date of Birth : </label>
+              <input class="form-control" type="date" formControlName="dob" id="dob">
+              <!-- error -->
+              <div class="text-danger" *ngIf="submitted && validateForm['dob'].errors?.['required']">Student date ofbirth is required.</div>
+            </div>
+            <!-- error -->
+            <div class="mb-3">
+              <div class="text-danger" style="display: none;" id="invalidStudent">The provided details do not match.</div>
+            </div>
+
+            <div class="text-center my-lg-5">
+              <span class="px-3">
+                <a><button type="submit" class="btn btn-success w-25" onclick="blur()">Search Results</button></a>
+              </span>
+              <span class="px-3">
+                <button type="button" class="btn btn-warning" (click)="onReset()" onclick="blur()">Clear</button>
+              </span>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+</section>

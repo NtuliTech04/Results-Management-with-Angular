@@ -1,0 +1,24 @@
+<section class="form container-fluid">
+  <a routerLink="/" class="btn btn-outline-dark">Go Back</a>
+  <div class="container teacher-login">
+    <div class="row">
+      <form [formGroup]="loginForm" (ngSubmit)="onLogin()" class="teachForm">
+        <div class="col-lg-6">
+          <h3>Teacher Login</h3>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Password : </label>
+            <input class="form-control" type="password" formControlName="password" id="passTxt">
+            <!-- error -->
+            <div class="text-danger" *ngIf="submitted && authForm['password'].errors?.['required']">Enter your password
+              to login.</div>
+            <div class="text-danger" style="display: none;" id="invalidPass">The provided password is incorrect.</div>
+            <br>
+            <input type="checkbox" style="width: 30px;" (click)="makeVisible()">Show Password
+            <br>
+          </div>
+          <a><button type="submit" class="btn btn-success">Login</button></a>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
